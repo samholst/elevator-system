@@ -11,6 +11,7 @@ class ElevatorSystem
   end
 
   def elevator_request(floor:, direction:)
+    @queue.push({ floor: floor, direction: direction })
   end
 
   def floor_request(floor)
@@ -18,9 +19,11 @@ class ElevatorSystem
 
   def start
     while true
-      if
-      sleep 0.1
+      if queue_has_a_request?
+        assign_elevator
+      end
 
+      sleep 0.1
     end
   end
 
@@ -28,7 +31,7 @@ class ElevatorSystem
     def assign_elevator
     end
 
-    def pending_request?
+    def queue_has_a_request?
       @queue.length > 0
     end
 end
