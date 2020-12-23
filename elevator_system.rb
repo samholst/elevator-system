@@ -19,7 +19,8 @@ class ElevatorSystem
   end
 
   def floor_request(floor)
-    # Not implemented yet
+    # Not implemented yet, but with the timer implemenation
+    # would refactor to use just one request for floor and elevator
   end
 
   private
@@ -31,9 +32,8 @@ class ElevatorSystem
     def run
       Thread.new {
         while true
-
           unless queue.empty?
-            assign_elevator(queue.delete(0))
+            assign_elevator(queue.shift)
           end
 
           sleep 0.1
@@ -45,3 +45,7 @@ end
 elevator_system = ElevatorSystem.new(elevator_count: 3, floor_count: 10)
 elevator_system.elevator_request(floor: 1, direction: :up)
 elevator_system.elevator_request(floor: 2, direction: :up)
+
+while true
+  # run elevator system
+end
