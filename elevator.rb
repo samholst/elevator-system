@@ -44,7 +44,7 @@ class Elevator
 
     def remove_request(request)
       @queue.delete_if do | queued_request |
-        queued_request == new_request
+        queued_request == request
       end
     end
 end
