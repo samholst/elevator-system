@@ -20,13 +20,15 @@ class ElevatorSystem
 
   def floor_request(floor)
     # Not implemented yet, but with the timer implemenation
-    # would refactor to use just one request for floor and elevator
+    # would refactor to use just one request for floor and elevator.
   end
 
   private
     def assign_elevator(request)
       sorted_elevators = elevators.sort { | e_1, e_2 | e_1.floor <=> e_2.floor }
-      # Not fully implemented
+      # Not fully implemented, but would assign to closest elevator
+      # going in the same direction or assign to one that would be
+      # available for the request after finishing its queue.
     end
 
     def run
@@ -47,5 +49,5 @@ elevator_system.elevator_request(floor: 1, direction: :up)
 elevator_system.elevator_request(floor: 2, direction: :up)
 
 while true
-  # run elevator system
+  # Run the elevator system.
 end

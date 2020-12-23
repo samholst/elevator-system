@@ -10,7 +10,7 @@ class Elevator
 
   def register_request(target_floor: , direction:)
     # Need to refactor to a single integer for request
-    # or to have it remain a hash with additional properties
+    # or to have it remain a hash with additional properties.
     request = { target_floor: target_floor }
 
     queue.push(request) unless request_already_in_queue?(request)
