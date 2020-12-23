@@ -1,5 +1,5 @@
 class Elevator
-  attr_reader :request_completed?, :target_floor, :current_direction, :current_floor, :queue
+  attr_reader :target_floor, :current_direction, :current_floor, :queue
 
   def initialize
     @current_floor = 0
@@ -12,7 +12,7 @@ class Elevator
       direction: direction
     }
 
-    queue.push(request) unless request_already_in_queue?request)
+    queue.push(request) unless request_already_in_queue?(request)
   end
 
   def request_count
@@ -21,7 +21,7 @@ class Elevator
 
   private
     def start
-      Thread.new do
+      Thread.new {
         while true
           completed_request = find_completed_request
 
@@ -29,7 +29,7 @@ class Elevator
 
           sleep 0.2
         end
-      end
+      }
     end
 
     def find_completed_request
@@ -37,14 +37,10 @@ class Elevator
     end
 
     def request_already_in_queue?(request)
-      !queue.find do | queued_request |
-        queued_request == request
-      end.nil?
+      !queue.find { | queued_request | queued_request == request }.nil?
     end
 
     def remove_request(request)
-      queue.delete_if do | queued_request |
-        queued_request == request
-      end
+      queue.delete_if { | queued_request | queued_request == request }
     end
 end
