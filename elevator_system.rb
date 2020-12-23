@@ -12,7 +12,7 @@ class ElevatorSystem
   end
 
   def elevator_request(floor:, direction:)
-    @queue.push({
+    queue.push({
       floor: floor,
       direction: direction
     })
@@ -36,7 +36,7 @@ class ElevatorSystem
     end
 
     def queue_has_a_request?
-      @queue.length > 0
+      queue.length > 0
     end
 end
 

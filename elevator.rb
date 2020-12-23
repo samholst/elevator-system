@@ -12,11 +12,11 @@ class Elevator
       direction: direction
     }
 
-    @queue.push(request) unless request_already_in_queue?request)
+    queue.push(request) unless request_already_in_queue?request)
   end
 
   def request_count
-    @queue.size
+    queue.size
   end
 
   private
@@ -33,17 +33,17 @@ class Elevator
     end
 
     def find_completed_request
-      @queue.find { | request | request.target_floor == current_floor }
+      queue.find { | request | request.target_floor == current_floor }
     end
 
     def request_already_in_queue?(request)
-      !@queue.find do | queued_request |
+      !queue.find do | queued_request |
         queued_request == request
       end.nil?
     end
 
     def remove_request(request)
-      @queue.delete_if do | queued_request |
+      queue.delete_if do | queued_request |
         queued_request == request
       end
     end
