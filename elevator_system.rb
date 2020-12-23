@@ -38,7 +38,7 @@ class ElevatorSystem
 
           sleep 0.1
         end
-      }.join
+      }
     end
 end
 
