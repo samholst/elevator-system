@@ -21,7 +21,7 @@ class ElevatorSystem
   def floor_request(floor)
   end
 
-  def start
+  def run
     while true
       if queue_has_a_request?
         assign_elevator(queue.delete(0))

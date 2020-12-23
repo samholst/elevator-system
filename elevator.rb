@@ -20,7 +20,7 @@ class Elevator
   end
 
   private
-    def start
+    def run
       Thread.new {
         while true
           remove_request(completed_request) if completed_request = find_completed_request
