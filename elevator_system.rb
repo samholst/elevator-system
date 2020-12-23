@@ -8,10 +8,14 @@ class ElevatorSystem
     @elevator_count = elevator_count
     @floor_count = floor_count
     @queue = []
+    @elevators = Array.new(elevator_count) { Elevator.new }
   end
 
   def elevator_request(floor:, direction:)
-    @queue.push({ floor: floor, direction: direction })
+    @queue.push({
+      floor: floor,
+      direction: direction
+    })
   end
 
   def floor_request(floor)
@@ -20,7 +24,7 @@ class ElevatorSystem
   def start
     while true
       if queue_has_a_request?
-        assign_elevator
+        assign_elevator(queue.delete(0))
       end
 
       sleep 0.1
@@ -28,7 +32,7 @@ class ElevatorSystem
   end
 
   private
-    def assign_elevator
+    def assign_elevator(request)
     end
 
     def queue_has_a_request?
