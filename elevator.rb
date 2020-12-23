@@ -5,6 +5,7 @@ class Elevator
     @floor = 0
     @queue = []
     @direction = :up
+    run
   end
 
   def register_request(target_floor: , direction:)
@@ -21,6 +22,7 @@ class Elevator
 
   private
     def run
+      # Not fully completed
       Thread.new {
         while true
           remove_request(completed_request) if completed_request = find_completed_request
